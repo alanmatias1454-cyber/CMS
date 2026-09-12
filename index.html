@@ -660,6 +660,26 @@ footer{
     display:block;
     margin-top:8px;
   }
+  /* AUTENTICACIÓN GOOGLE */
+
+    #btn-google {
+      margin-top: 25px;
+      padding: 14px 22px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: #050505;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    #btn-google:hover {
+      transform: translateY(-2px);
+      background: #e8e8e8;
+    }
 
 }
 
@@ -1275,6 +1295,10 @@ footer{
           ¿Tenés un proyecto?
           Hablemos.
         </h2>
+        
+        <button id="btn-google" type="button" onclick="iniciarSesionGoogle()">
+            Iniciar sesión con Google
+        </button>
 
       </div>
 
@@ -1494,6 +1518,38 @@ document
   .querySelectorAll('.reveal')
   .forEach(el => observer.observe(el));
 
+</script>
+
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAnMcJrBMsOmleeTnIsBRInurnzaLm0huU",
+    authDomain: "cms1-72ecb.firebaseapp.com",
+    projectId: "cms1-72ecb",
+    storageBucket: "cms1-72ecb.firebasestorage.app",
+    messagingSenderId: "522505945463",
+    appId: "1:522505945463:web:7a39acb740131506f42172"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  window.iniciarSesionGoogle = async function() {
+    try {
+      const resultado = await signInWithPopup(auth, provider);
+      console.log("Usuario autenticado:", resultado.user);
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+    }
+  };
+
+  window.cerrarSesion = async function() {
+    await signOut(auth);
+    console.log("Sesión cerrada");
+  };
 </script>
 
 </body>
