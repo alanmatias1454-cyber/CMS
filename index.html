@@ -1295,10 +1295,13 @@ footer{
           ¿Tenés un proyecto?
           Hablemos.
         </h2>
-        
+
         <button id="btn-google" type="button" onclick="iniciarSesionGoogle()">
             Iniciar sesión con Google
         </button>
+
+        <button onclick="modificarUsuario()">Modificar usuario</button>
+        <button onclick="bajaUsuario()">Dar de baja</button>
 
       </div>
 
@@ -1550,6 +1553,94 @@ document
     await signOut(auth);
     console.log("Sesión cerrada");
   };
+</script>
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      updateDoc,
+      getDoc
+    } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAnMcJrBMsOmleeTnIsBRInurnzaLm0huU",
+      authDomain: "cms1-72ecb.firebaseapp.com",
+      projectId: "cms1-72ecb",
+      storageBucket: "cms1-72ecb.firebasestorage.app",
+      messagingSenderId: "522505945463",
+      appId: "1:522505945463:web:7a39acb740131506f42172"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    window.iniciarSesionGoogle = async function () {
+      try {
+        const resultado = await signInWithPopup(auth, provider);
+        const usuario = resultado.user;
+
+        await setDoc(doc(db, "usuarios", usuario.uid), {
+          nombre: usuario.displayName,
+          email: usuario.email,
+          foto: usuario.photoURL,
+          activo: true
+        }, { merge: true });
+
+        console.log("Usuario autenticado:", usuario.email);
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+      }
+    };
+
+    window.cerrarSesion = async function () {
+      await signOut(auth);
+      console.log("Sesión cerrada");
+    };
+
+    window.modificarUsuario = async function() {
+  const usuario = auth.currentUser;
+
+  if (!usuario) {
+    alert("Primero iniciá sesión con Google.");
+    return;
+  }
+
+  const nuevoNombre = prompt("Ingresá el nuevo nombre:");
+
+  if (!nuevoNombre) return;
+
+  await updateDoc(doc(db, "usuarios", usuario.uid), {
+    nombre: nuevoNombre
+  });
+
+  alert("Usuario modificado correctamente.");
+};
+
+window.bajaUsuario = async function() {
+  const usuario = auth.currentUser;
+
+  if (!usuario) {
+    alert("Primero iniciá sesión con Google.");
+    return;
+  }
+
+  await updateDoc(doc(db, "usuarios", usuario.uid), {
+    activo: false
+  });
+
+  alert("Usuario dado de baja.");
+};
 </script>
 
 </body>
