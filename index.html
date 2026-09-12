@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CMS — Producción audiovisual, marketing digital y desarrollo web.">
+<title>CMS | Audiovisual • Marketing • Web</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#050505;
+  --surface:#0d0d0d;
+  --surface2:#151515;
+  --text:#f5f5f5;
+  --muted:#a4a4a4;
+  --line:rgba(255,255,255,.12);
+  --max:1180px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img,
+video{
+  display:block;
+  max-width:100%;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  z-index:-2;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.08),transparent 25%),
+    radial-gradient(circle at 80% 60%,rgba(255,255,255,.05),transparent 30%);
+  filter:blur(35px);
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255,255,255,.015) 50%,
+    transparent 100%
+  );
+}
+
+.container{
+  width:min(92%,var(--max));
+  margin:auto;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  background:rgba(5,5,5,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid transparent;
+  transition:.3s;
+}
+
+nav.scrolled{
+  border-color:var(--line);
+  background:rgba(5,5,5,.9);
+}
+
+.nav-inner{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand-logo{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  font-size:13px;
+  font-weight:600;
+  color:#ccc;
+}
+
+.nav-links a{
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:120px 0 70px;
+  position:relative;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:70px;
+  align-items:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:#ccc;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:25px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  background:#fff;
+  border-radius:50%;
+}
+
+h1{
+  font-size:clamp(55px,8vw,105px);
+  line-height:.9;
+  letter-spacing:-6px;
+  max-width:800px;
+}
+
+.hero p{
+  max-width:650px;
+  color:var(--muted);
+  font-size:18px;
+  margin:30px 0;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 21px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  border:1px solid var(--line);
+  transition:.25s;
+}
+
+.btn.primary{
+  background:#fff;
+  color:#050505;
+  border-color:#fff;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.hero-card{
+  position:relative;
+  aspect-ratio:4/5;
+  border:1px solid var(--line);
+  border-radius:28px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#181818,#070707);
+  display:flex;
+  align-items:flex-end;
+  padding:28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+
+.hero-card::before{
+  content:"CMS";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:clamp(100px,18vw,230px);
+  font-weight:900;
+  letter-spacing:-15px;
+  color:rgba(255,255,255,.035);
+}
+
+.hero-logo{
+  position:absolute;
+  top:45%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:75%;
+  max-width:500px;
+  max-height:70%;
+  height:auto;
+  object-fit:contain;
+  z-index:1;
+}
+
+.hero-card-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero-card-content span{
+  color:#999;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+}
+
+.hero-card-content strong{
+  display:block;
+  font-size:27px;
+  line-height:1.1;
+  margin-top:7px;
+}
+
+/* SECCIONES */
+
+section{
+  padding:115px 0;
+  border-top:1px solid var(--line);
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  align-items:end;
+  margin-bottom:50px;
+}
+
+.kicker{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#888;
+  margin-bottom:12px;
+}
+
+h2{
+  font-size:clamp(36px,5vw,65px);
+  letter-spacing:-3px;
+  line-height:1;
+}
+
+.section-head p{
+  max-width:470px;
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* NOSOTROS */
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+}
+
+.about-text{
+  font-size:24px;
+  line-height:1.35;
+  max-width:620px;
+}
+
+.about-text strong{
+  color:#fff;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--line);
+}
+
+.stat{
+  background:var(--bg);
+  padding:30px;
+}
+
+.stat b{
+  font-size:32px;
+  display:block;
+}
+
+.stat span{
+  font-size:12px;
+  color:#888;
+}
+
+/* SERVICIOS */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.service{
+  min-height:300px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:linear-gradient(145deg,#111,#080808);
+  transition:.3s;
+}
+
+.service:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.3);
+}
+
+.service-number{
+  font-size:12px;
+  color:#777;
+}
+
+.service h3{
+  font-size:27px;
+  margin:80px 0 12px;
+}
+
+.service p{
+  color:#8f8f8f;
+  font-size:14px;
+}
+
+/* TRABAJOS */
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.work{
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--surface);
+}
+
+/* FORMATO 9:16 */
+
+.work-media{
+  aspect-ratio:9/16;
+  background:#111;
+  position:relative;
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.work-media video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.work-info{
+  padding:22px;
+}
+
+.work-info h3{
+  font-size:20px;
+}
+
+.work-info p{
+  color:#888;
+  font-size:13px;
+  margin-top:5px;
+}
+
+/* PANELES */
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.panel{
+  min-height:370px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:35px;
+  background:linear-gradient(145deg,#121212,#080808);
+}
+
+.panel h3{
+  font-size:31px;
+  margin:60px 0 10px;
+}
+
+.panel p{
+  color:#8d8d8d;
+  max-width:480px;
+}
+
+.tag-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:25px;
+}
+
+.tag{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:11px;
+  color:#bbb;
+}
+
+/* CONTACTO */
+
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.contact h2{
+  max-width:650px;
+}
+
+.contact-info{
+  display:grid;
+  gap:12px;
+}
+
+.contact-link{
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#0b0b0b;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:.25s;
+}
+
+.contact-link:hover{
+  background:#141414;
+}
+
+.contact-link small{
+  display:block;
+  color:#777;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.contact-link span{
+  font-weight:700;
+}
+
+.arrow{
+  font-size:20px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:35px 0;
+  border-top:1px solid var(--line);
+  color:#666;
+  font-size:12px;
+}
+
+.footer-inner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* BOTONES FLOTANTES */
+
+.floating{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:99;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.float-btn{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#fff;
+  color:#050505;
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 12px 30px rgba(0,0,0,.45);
+  transition:.25s;
+}
+
+.float-btn:hover{
+  transform:scale(1.08);
+}
+
+.float-btn svg{
+  width:25px;
+  height:25px;
+}
+
+/* ANIMACIONES */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero-grid,
+  .about,
+  .contact,
+  .split{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .hero-card{
+    max-width:500px;
+    margin:auto;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .work-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head p{
+    margin-top:20px;
+  }
+
+  h1{
+    letter-spacing:-4px;
+  }
+}
+
+@media(max-width:520px){
+
+  section{
+    padding:80px 0;
+  }
+
+  .hero{
+    padding-bottom:50px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .about-text{
+    font-size:20px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    display:block;
+  }
+
+  .footer-inner span{
+    display:block;
+    margin-top:8px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav id="nav">
+
+  <div class="container nav-inner">
+
+    <a class="brand" href="#inicio">
+
+      <img
+        class="brand-logo"
+        src="WhatsApp Image 2026-09-12 at 9.46.08 AM.jpeg"
+        alt="Logo CMS"
+      >
+
+    </a>
+
+    <div class="nav-links">
+
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+  <div class="container hero-grid">
+
+    <div class="reveal">
+
+      <div class="eyebrow">
+
+        <span class="dot"></span>
+
+        Audiovisual • Marketing • Web
+
+      </div>
+
+      <h1>
+        Hacemos que tu proyecto se vea.
+      </h1>
+
+      <p>
+        En CMS creamos contenido audiovisual, piezas para Instagram y
+        soluciones web pensadas para comunicar ideas, proyectos y marcas
+        de una manera profesional.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          class="btn primary"
+          href="#trabajos"
+        >
+          Ver nuestros trabajos
+        </a>
+
+        <a
+          class="btn"
+          href="#contacto"
+        >
+          Contactarnos
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card reveal">
+
+      <img
+        class="hero-logo"
+        src="WhatsApp Image 2026-09-12 at 9.46.08 AM.jpeg"
+        alt="Logo CMS"
+      >
+
+      <div class="hero-card-content">
+
+        <span>
+          CMS / Creative Media
+        </span>
+
+        <strong>
+          Contenido que comunica.
+          Ideas que se convierten en imagen.
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NOSOTROS -->
+
+<section id="nosotros">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <div class="kicker">
+          01 — Quiénes somos
+        </div>
+
+        <h2>
+          Creatividad<br>
+          con propósito.
+        </h2>
+
+      </div>
+
+      <p>
+        Combinamos producción audiovisual, comunicación digital y desarrollo
+        web para crear una presencia completa y coherente.
+      </p>
+
+    </div>
+
+
+    <div class="about">
+
+      <div class="about-text reveal">
+
+        Nos encargamos de transformar una idea en
+        <strong>contenido real</strong>:
+
+        desde la planificación y grabación hasta la edición,
+        publicación y desarrollo de páginas web.
+
+      </div>
+
+
+      <div class="stats reveal">
+
+        <div class="stat">
+
+          <b>VIDEO</b>
+
+          <span>
+            Producción y edición audiovisual
+          </span>
+
+        </div>
+
+        <div class="stat">
+
+          <b>IG</b>
+
+          <span>
+            Contenido para redes sociales
+          </span>
+
+        </div>
+
+        <div class="stat">
+
+          <b>WEB</b>
+
+          <span>
+            Páginas web personalizadas
+          </span>
+
+        </div>
+
+        <div class="stat">
+
+          <b>CMS</b>
+
+          <span>
+            Comunicación digital integral
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICIOS -->
+
+<section id="servicios">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <div class="kicker">
+          02 — Servicios
+        </div>
+
+        <h2>
+          Todo en<br>
+          un mismo lugar.
+        </h2>
+
+      </div>
+
+      <p>
+        Diseñamos soluciones adaptadas a cada proyecto, desde una pieza
+        audiovisual puntual hasta una presencia digital completa.
+      </p>
+
+    </div>
+
+
+    <div class="services">
+
+
+      <article class="service reveal">
+
+        <span class="service-number">
+          01 / AUDIOVISUAL
+        </span>
+
+        <h3>
+          Videos personalizados
+        </h3>
+
+        <p>
+          Grabación, edición, entrevistas, cobertura de eventos y videos
+          pensados específicamente para cada proyecto.
+        </p>
+
+      </article>
+
+
+      <article class="service reveal">
+
+        <span class="service-number">
+          02 / REDES
+        </span>
+
+        <h3>
+          Contenido para Instagram
+        </h3>
+
+        <p>
+          Reels, publicaciones, piezas gráficas y contenido preparado
+          para comunicar y mostrar lo que hacés.
+        </p>
+
+      </article>
+
+
+      <article class="service reveal">
+
+        <span class="service-number">
+          03 / WEB
+        </span>
+
+        <h3>
+          Páginas web
+        </h3>
+
+        <p>
+          Diseño y desarrollo de sitios modernos, adaptables a celulares,
+          tablets y computadoras.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TRABAJOS -->
+
+<section id="trabajos">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <div>
+
+        <div class="kicker">
+          03 — Trabajos
+        </div>
+
+        <h2>
+          Lo que<br>
+          hacemos.
+        </h2>
+
+      </div>
+
+      <p>
+        Una selección de nuestros proyectos audiovisuales, contenido digital
+        y trabajos web.
+      </p>
+
+    </div>
+
+
+    <div class="work-grid">
+
+
+      <!-- VIDEO 1 -->
+
+      <article class="work reveal">
+
+        <div class="work-media">
+
+          <video
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          >
+
+            <source
+              src="WhatsApp Video 2026-09-12 at 9.48.07 AM.mp4"
+              type="video/mp4"
+            >
+
+            Tu navegador no puede reproducir este video.
+
+          </video>
+
+        </div>
+
+        <div class="work-info">
+
+          <h3>
+            Producción audiovisual
+          </h3>
+
+          <p>
+            Video personalizado para presentar un proyecto o actividad.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 2 -->
+
+      <article class="work reveal">
+
+        <div class="work-media">
+
+          <video
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          >
+
+            <source
+              src="0627.mp4"
+              type="video/mp4"
+            >
+
+            Tu navegador no puede reproducir este video.
+
+          </video>
+
+        </div>
+
+        <div class="work-info">
+
+          <h3>
+            Contenido para Instagram
+          </h3>
+
+          <p>
+            Formato vertical pensado para Reels y redes sociales.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 3 -->
+
+      <article class="work reveal">
+
+        <div class="work-media">
+
+          <video
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          >
+
+            <source
+              src="0704 (1).mp4"
+              type="video/mp4"
+            >
+
+            Tu navegador no puede reproducir este video.
+
+          </video>
+
+        </div>
+
+        <div class="work-info">
+
+          <h3>
+            Cobertura
+          </h3>
+
+          <p>
+            Registro audiovisual de eventos, proyectos y actividades.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <!-- VIDEO 4 -->
+
+      <article class="work reveal">
+
+        <div class="work-media">
+
+          <video
+            controls
+            muted
+            playsinline
+            preload="metadata"
+          >
+
+            <source
+              src="pagina video.mp4"
+              type="video/mp4"
+            >
+
+            Tu navegador no puede reproducir este video.
+
+          </video>
+
+        </div>
+
+        <div class="work-info">
+
+          <h3>
+            Proyecto web
+          </h3>
+
+          <p>
+            Diseño de una página web moderna y responsive.
+          </p>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTENIDO Y WEB -->
+
+<section>
+
+  <div class="container">
+
+    <div class="split">
+
+
+      <div class="panel reveal">
+
+        <div class="kicker">
+          Contenido
+        </div>
+
+        <h3>
+          Videos que cuentan una historia.
+        </h3>
+
+        <p>
+          Planificamos cada producción para que el resultado no sea solamente
+          un video, sino una pieza que represente el proyecto y llegue a su público.
+        </p>
+
+        <div class="tag-list">
+
+          <span class="tag">
+            Reels
+          </span>
+
+          <span class="tag">
+            Entrevistas
+          </span>
+
+          <span class="tag">
+            Eventos
+          </span>
+
+          <span class="tag">
+            Edición
+          </span>
+
+          <span class="tag">
+            Contenido digital
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="panel reveal">
+
+        <div class="kicker">
+          Desarrollo
+        </div>
+
+        <h3>
+          Webs simples, modernas y funcionales.
+        </h3>
+
+        <p>
+          Creamos páginas que presentan servicios, trabajos, información y
+          formas de contacto de manera clara y profesional.
+        </p>
+
+        <div class="tag-list">
+
+          <span class="tag">
+            Responsive
+          </span>
+
+          <span class="tag">
+            Landing pages
+          </span>
+
+          <span class="tag">
+            Diseño
+          </span>
+
+          <span class="tag">
+            Desarrollo
+          </span>
+
+          <span class="tag">
+            Contacto
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACTO -->
+
+<section id="contacto">
+
+  <div class="container">
+
+    <div class="contact">
+
+
+      <div class="reveal">
+
+        <div class="kicker">
+          04 — Contacto
+        </div>
+
+        <h2>
+          ¿Tenés un proyecto?
+          Hablemos.
+        </h2>
+
+      </div>
+
+
+      <div class="contact-info reveal">
+
+
+        <!-- WHATSAPP -->
+
+        <a
+          class="contact-link"
+          href="https://wa.me/541131718781?text=Hola%20CMS%2C%20quiero%20consultar%20por%20sus%20servicios."
+          target="_blank"
+          rel="noopener"
+        >
+
+          <div>
+
+            <small>
+              WhatsApp
+            </small>
+
+            <span>
+              11 3171-8781
+            </span>
+
+          </div>
+
+          <span class="arrow">
+            ↗️
+          </span>
+
+        </a>
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+          class="contact-link"
+          href="https://www.instagram.com/comunitymanagers_/"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <div>
+
+            <small>
+              Instagram
+            </small>
+
+            <span>
+              @comunitymanagers_
+            </span>
+
+          </div>
+
+          <span class="arrow">
+            ↗️
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <strong>
+      CMS
+    </strong>
+
+    <span>
+      Audiovisual • Marketing Digital • Desarrollo Web
+    </span>
+
+    <span>
+      ©️ 2026 CMS
+    </span>
+
+  </div>
+
+</footer>
+
+
+<!-- BOTONES FLOTANTES -->
+
+<div class="floating">
+
+
+  <!-- WHATSAPP -->
+
+  <a
+    class="float-btn"
+    href="https://wa.me/541131718781?text=Hola%20CMS%2C%20quiero%20consultar%20por%20sus%20servicios."
+    target="_blank"
+    rel="noopener"
+    aria-label="WhatsApp"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+    >
+
+      <path d="M20 11.5a8.4 8.4 0 0 1-12.4 7.4L4 20l1.2-3.4A8.4 8.4 0 1 1 20 11.5Z"/>
+
+      <path d="M8.5 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.8 1.4 1.8 2.3 3.2 3l.6-.6c.2-.2.4-.2.6-.1l1.4.7c.3.1.4.3.3.6-.2.8-.8 1.3-1.6 1.4-2 .1-4.3-1.1-5.8-2.7-1.4-1.5-2.3-3.5-2.2-4.9.1-.5.4-.9.8-1.1Z"/>
+
+    </svg>
+
+  </a>
+
+
+  <!-- INSTAGRAM -->
+
+  <a
+    class="float-btn"
+    href="https://www.instagram.com/comunitymanagers_/"
+    target="_blank"
+    rel="noopener"
+    aria-label="Instagram"
+  >
+
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+    >
+
+      <rect
+        x="3.5"
+        y="3.5"
+        width="17"
+        height="17"
+        rx="5"
+      />
+
+      <circle
+        cx="12"
+        cy="12"
+        r="4"
+      />
+
+      <circle
+        cx="17.5"
+        cy="6.7"
+        r=".8"
+        fill="currentColor"
+        stroke="none"
+      />
+
+    </svg>
+
+  </a>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const nav = document.getElementById('nav');
+
+window.addEventListener('scroll', () => {
+
+  nav.classList.toggle(
+    'scrolled',
+    window.scrollY > 20
+  );
+
+});
+
+
+const observer = new IntersectionObserver(
+
+  (entries) => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add('visible');
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+
+  {
+    threshold:.12
+  }
+
+);
+
+
+document
+  .querySelectorAll('.reveal')
+  .forEach(el => observer.observe(el));
+
+</script>
+
+</body>
+</html>
