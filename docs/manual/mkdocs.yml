@@ -1,0 +1,7 @@
+site_name: CMS - Manual de Instalación y Uso
+site_description: Manual del proyecto CMS
+theme:
+  name: material
+
+nav:
+  - Inicio: index.md
