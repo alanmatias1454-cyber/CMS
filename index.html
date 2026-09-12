@@ -8,6 +8,33 @@
 
 <style>
 
+
+.contact-buttons {
+  display: flex !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  margin-top: 25px !important;
+}
+
+.contact-buttons button {
+  padding: 14px 20px !important;
+  border: 1px solid #fff !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  color: #050505 !important;
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: .25s !important;
+}
+
+.contact-buttons button:hover {
+  background: #ddd !important;
+  transform: translateY(-3px) !important;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root{
@@ -1296,12 +1323,11 @@ footer{
           Hablemos.
         </h2>
 
-        <button id="btn-google" type="button" onclick="iniciarSesionGoogle()">
-            Iniciar sesión con Google
-        </button>
-
-        <button onclick="modificarUsuario()">Modificar usuario</button>
-        <button onclick="bajaUsuario()">Dar de baja</button>
+        <div class="contact-buttons">
+          <button onclick="iniciarSesionGoogle()">Iniciar sesión con Google</button>
+          <button onclick="modificarUsuario()">Modificar usuario</button>
+          <button onclick="bajaUsuario()">Dar de baja</button>
+        </div>
 
       </div>
 

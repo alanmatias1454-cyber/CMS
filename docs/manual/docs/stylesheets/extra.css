@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root{
@@ -23,7 +22,7 @@ html{
 
 body{
   font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
+  background:var(--bg) !important;
   color:var(--text);
   line-height:1.6;
   overflow-x:hidden;
@@ -64,6 +63,8 @@ body::after{
     transparent 100%
   );
 }
+
+/* CONTENEDOR */
 
 .container{
   width:min(92%,var(--max));
@@ -389,8 +390,6 @@ h2{
   background:var(--surface);
 }
 
-/* FORMATO 9:16 */
-
 .work-media{
   aspect-ratio:9/16;
   background:#111;
@@ -512,6 +511,38 @@ h2{
   font-size:20px;
 }
 
+/* BOTONES DE CONTACTO */
+
+.contact-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.contact-buttons button{
+  padding:14px 20px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;
+  background:#fff !important;
+  color:#050505 !important;
+  font-family:Inter,Arial,sans-serif;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.contact-buttons button:hover{
+  transform:translateY(-3px);
+  background:#ddd !important;
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.contact-buttons button:active{
+  transform:translateY(-1px);
+}
+
 /* FOOTER */
 
 footer{
@@ -574,6 +605,12 @@ footer{
 .reveal.visible{
   opacity:1;
   transform:none;
+}
+
+/* TITULO DEL MANUAL */
+
+.md-content h1{
+  color:#fff;
 }
 
 /* RESPONSIVE */
@@ -654,6 +691,62 @@ footer{
 
 }
 
-.md-content h1 {
-  color: #fff;
+/* ===== BOTONES CONTACTO - FORZAR ESTILO ===== */
+
+.md-content .contact-buttons{
+  display:flex !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
+  margin-top:25px !important;
+}
+
+.md-content .contact-buttons button,
+.md-typeset .contact-buttons button,
+.contact-buttons button[onclick]{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  padding:14px 20px !important;
+
+  min-height:48px !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  border-radius:10px !important;
+
+  background:#ffffff !important;
+  background-image:none !important;
+
+  color:#050505 !important;
+
+  font-family:Inter,Arial,sans-serif !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  line-height:1.2 !important;
+
+  cursor:pointer !important;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.25) !important;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease !important;
+}
+
+.md-content .contact-buttons button:hover,
+.md-typeset .contact-buttons button:hover,
+.contact-buttons button[onclick]:hover{
+  background:#dddddd !important;
+  color:#050505 !important;
+  transform:translateY(-3px) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.4) !important;
+}
+
+.md-content .contact-buttons button:active,
+.md-typeset .contact-buttons button:active,
+.contact-buttons button[onclick]:active{
+  transform:translateY(-1px) !important;
 }

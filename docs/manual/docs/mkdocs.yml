@@ -1,6 +1,8 @@
 site_name: CMS - Manual de Instalación y Uso
 site_description: Manual del proyecto CMS
 
+docs_dir: .
+
 theme:
   name: material
 
