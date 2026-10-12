@@ -53,7 +53,6 @@ La documentación y el manual de instalación y uso se encuentran dentro de la c
 ## 📬 Contacto
 
 - **Instagram:** [@comunitymanagers_](https://www.instagram.com/comunitymanagers_/)
-- **WhatsApp:** [Contactar a CMS](https://wa.me/541131718781)
 - **Email:** cmsproyecto12@gmail.com
 
 ---
